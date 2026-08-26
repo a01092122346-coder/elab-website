@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>분석 사례 | ELAB 이랩</title>
+  <meta name="description" content="ELAB이 수행한 티타늄 합금 용접 평가, 보일러 튜브 손상 분석, P92 내열강, Ingot 매크로 에칭, 경도 분포, 현장 Replica 검사 등 실제 분석 사례를 확인하세요.">
+  <!-- OpenGraph / SNS Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="ELAB 이랩">
+  <meta property="og:title" content="분석 사례 | ELAB 이랩">
+  <meta property="og:description" content="ELAB이 수행한 대표적 재료 분석 사례 및 미세조직 평가 모음">
+  <meta property="og:image" content="images/hero_main_microstructure.jpg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="images/elab-logo-header.png" alt="ELAB" class="logo-img" onerror="this.style.display='none';">
+        <span class="logo-sub">금속재료 전처리 및 분석</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html#about"          class="nav-link">ELAB 소개</a>
+        <a href="index.html#services"       class="nav-link">분석 서비스</a>
+        <a href="index.html#infrastructure" class="nav-link">분석 인프라</a>
+        <a href="cases.html"                class="nav-link">분석 사례</a>
+        <a href="contact.html"              class="nav-link">연락처</a>
+      </nav>
+      <div class="header-actions">
+        <a href="estimate.html" class="btn btn-primary header-cta">견적 문의하기</a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="메뉴 열기">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-header">
+      <div class="logo">
+        <img src="images/elab-logo-header.png" alt="ELAB" class="logo-img" onerror="this.style.display='none';">
+        <span class="logo-sub">금속재료 전처리 및 분석</span>
+      </div>
+      <button class="close-drawer-btn" id="closeDrawerBtn" aria-label="메뉴 닫기">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html#about"          class="mobile-nav-link">ELAB 소개</a>
+      <a href="index.html#services"       class="mobile-nav-link">분석 서비스</a>
+      <a href="index.html#infrastructure" class="mobile-nav-link">분석 인프라</a>
+      <a href="cases.html"                class="mobile-nav-link">분석 사례</a>
+      <a href="contact.html"              class="mobile-nav-link">연락처</a>
+    </div>
+    <div style="margin-top:auto;padding-top:20px;">
+      <a href="estimate.html" class="btn btn-primary" style="width:100%;">이메일 견적 문의</a>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="page-banner-bg"></div>
+    <div class="container page-banner-content">
+      <div class="breadcrumb">
+        <a href="index.html">홈</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>분석 사례</span>
+      </div>
+      <div class="page-banner-tag">Case Studies</div>
+      <h1 class="page-banner-title">분석 사례</h1>
+      <p class="page-banner-desc">ELAB이 수행한 분야별 금속재료 분석 및 평가 실제 사례입니다.</p>
+    </div>
+  </div>
+
+  <!-- Sticky Category Navigation Bar -->
+  <nav class="cases-category-nav" id="casesCategoryNav">
+    <div class="container cases-category-container" id="casesCategoryContainer">
+      <a href="#micro"     class="cases-tab-btn" data-sec="micro">미세조직 관찰</a>
+      <a href="#macro"     class="cases-tab-btn" data-sec="macro">거시조직 분석</a>
+      <a href="#flowline"  class="cases-tab-btn" data-sec="flowline">단류선 검사</a>
+      <a href="#sem-micro" class="cases-tab-btn" data-sec="sem-micro">SEM 미세조직</a>
+      <a href="#sem-eds"   class="cases-tab-btn" data-sec="sem-eds">EDS 성분분석</a>
+      <a href="#epma"      class="cases-tab-btn" data-sec="epma">EPMA 성분분석</a>
+      <a href="#damage"   class="cases-tab-btn" data-sec="damage">손상 원인 분석</a>
+      <a href="#welding"  class="cases-tab-btn" data-sec="welding">용접성 평가</a>
+      <a href="#replica"  class="cases-tab-btn" data-sec="replica">현장 비파괴</a>
+    </div>
+  </nav>
+
+  <!-- Main Content Body (Category Sections) -->
+  <main style="background-color: var(--light-bg); padding-bottom: 60px;" id="casesMainContent">
+    <div class="container" id="casesMainContainer">
+
+      <!-- Section 1: 미세조직 관찰 -->
+      <section class="cases-category-sec" id="micro">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">미세조직 관찰</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <!-- 기술 자료 패널 (Case 1) -->
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">재질별 매크로 및 미세조직 분석</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• 철강, 스테인리스, Ti, Ni계, Al, 동합금 등 다양한 재질 대응</div>
+              <div class="tech-panel-desc-item">• 광학현미경(OM) 기반 결정립 및 상(Phase) 분포 정밀 평가, 열처리/가공 조직 변화 분석</div>
+            </div>
+          </div>
+
+          <!-- 기술 분석 자료 그리드 (상단 2열, 하단 1열) -->
+          <div class="tech-panel-body">
+            <!-- 상단 매크로 조직 분석 (2열 나란히) -->
+            <div class="tech-panel-macro-row">
+              <!-- 01 Stainless Steel 304 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">01</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">Stainless Steel 304 매크로 조직</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case1_ss304_macro.jpg" alt="Stainless Steel 304 매크로 조직" loading="lazy">
+                </div>
+              </div>
+
+              <!-- 02 Duplex Stainless Steel -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">02</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">Duplex Stainless Steel 매크로 조직</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case1_duplex_macro.jpg" alt="Duplex Stainless Steel 매크로 조직" loading="lazy">
+                </div>
+              </div>
+            </div>
+
+            <!-- 하단 재질별 OM 미세조직 (전체 폭 1열) -->
+            <div class="tech-panel-item">
+              <div class="tech-panel-item-header">
+                <span class="tech-panel-tag">03</span>
+                <div class="tech-panel-title-group">
+                  <h4 class="tech-panel-title">재질별 OM 미세조직 사진</h4>
+                  <span class="tech-panel-sub">Cast Steel, Ferrite+Pearlite, Martensite, Austenite, Ti, Cu, Al 등</span>
+                </div>
+              </div>
+              <div class="tech-panel-img-box">
+                <img src="images/case1_materials_microstructure.png" alt="재질별 OM 미세조직 사진" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: 거시조직 분석 -->
+      <section class="cases-category-sec" id="macro">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">거시조직 분석</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <!-- 기술 자료 패널 (Case 2) -->
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">Ti-6Al-4V VAR Ingot 매크로 에칭 전처리 사례</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• 실험 개요: 모 연구소에서 제작한 Ti-6Al-4V 합금 VAR Ingot에 대한 전면 매크로에칭을 수행하기 위한 전처리 의뢰 건.</div>
+              <div class="tech-panel-desc-item">• 검사 방법: 전면 Grinding(측면부 Hand Grinder로 수행) -&gt; Macro etching (Modified Kroll reagent)</div>
+            </div>
+          </div>
+
+          <!-- 기술 분석 자료 그리드 (상단 1열, 하단 2열) -->
+          <div class="tech-panel-body">
+            <!-- 상단 인수된 시험편의 형상 및 매크로 조직 사진 (전체 폭 1열) -->
+            <div class="tech-panel-item">
+              <div class="tech-panel-item-header">
+                <span class="tech-panel-tag">01</span>
+                <div class="tech-panel-title-group">
+                  <h4 class="tech-panel-title">인수된 시험편의 형상 및 매크로 조직 사진</h4>
+                </div>
+              </div>
+              <div class="tech-panel-img-box">
+                <img src="images/case2_ingot_overview.png" alt="인수된 시험편의 형상 및 매크로 조직 사진" loading="lazy">
+              </div>
+            </div>
+
+            <!-- 하단 매크로 조직 사진 (2열 나란히) -->
+            <div class="tech-panel-ingot-row">
+              <!-- 02 전면부 매크로 조직 사진 및 모식도 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">02</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">전면부 매크로 조직 사진 및 모식도</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case2_ingot_front.png" alt="전면부 매크로 조직 사진 및 모식도" loading="lazy">
+                </div>
+              </div>
+
+              <!-- 03 단면 길이방향 매크로 조직 사진 및 모식도 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">03</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">단면 길이방향 매크로 조직 사진 및 모식도</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case2_ingot_cross.jpg" alt="단면 길이방향 매크로 조직 사진 및 모식도" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: 단류선 검사 -->
+      <section class="cases-category-sec" id="flowline">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">단류선 검사</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <!-- 기술 자료 패널 -->
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">단류선(Grain Flow) 정밀 에칭 및 단면 검사</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• 단조/성형 제품 단면에 대한 매크로 에칭을 통해 금속 단류선(Grain Flow) 평가</div>
+            </div>
+          </div>
+
+          <!-- 기술 분석 자료 그리드 (전체 폭) -->
+          <div class="tech-panel-body">
+            <!-- 01 Hole Saw 내부 부품의 단류선(Grain Flow) 검사 결과 -->
+            <div class="tech-panel-item" style="max-width: 85%; margin: 0 auto;">
+              <div class="tech-panel-item-header">
+                <span class="tech-panel-tag">01</span>
+                <div class="tech-panel-title-group">
+                  <h4 class="tech-panel-title">Hole Saw 내부 부품의 단류선(Grain Flow) 검사 결과</h4>
+                </div>
+              </div>
+              <div class="tech-panel-img-box">
+                <img src="images/case_flowline_holesaw.jpg" alt="Hole Saw 내부 부품의 단류선(Grain Flow) 검사 결과" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 1: SEM 미세조직 분석 -->
+      <section class="cases-category-sec" id="sem-micro">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">SEM 미세조직</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">SEM 미세조직 관찰</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• 주사전자현미경(SEM) SE, BSE 모드를 통한 고배율 미세조직 관찰 및 상(Phase) 분포 정밀 평가</div>
+            </div>
+          </div>
+
+          <div class="tech-panel-body">
+            <div class="tech-panel-item">
+              <div class="tech-panel-item-header">
+                <span class="tech-panel-tag">01</span>
+                <div class="tech-panel-title-group">
+                  <h4 class="tech-panel-title">SEM 미세조직 관찰 (Nd계, Bi계 소재)</h4>
+                </div>
+              </div>
+              <div class="tech-panel-img-box">
+                <img src="images/case_sem_bse_microstructure.png" alt="SEM 미세조직 관찰 (Nd계, Bi계 소재)" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: EDS 성분분석 -->
+      <section class="cases-category-sec" id="sem-eds">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">EDS 성분분석</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">EDS 미세 영역 및 성분 분석</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• 미세 영역 및 단면 영역별 EDS 분광분석을 통한 주요 원소 분석</div>
+            </div>
+          </div>
+
+          <div class="tech-panel-body">
+            <div class="tech-panel-item">
+              <div class="tech-panel-item-header">
+                <span class="tech-panel-tag">01</span>
+                <div class="tech-panel-title-group">
+                  <h4 class="tech-panel-title">단면에 대한 EDS 성분분석 결과</h4>
+                </div>
+              </div>
+              <div class="tech-panel-img-box">
+                <img src="images/case_sem_eds_analysis.png" alt="단면에 대한 EDS 성분분석 결과" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: EPMA 성분분석 -->
+      <section class="cases-category-sec" id="epma">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">EPMA 성분분석</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">EPMA 원소 매핑 및 확산 깊이 정량 분석</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• EPMA 면분석(Mapping) 및 원소 확산 깊이 프로파일 정량 측정 평가</div>
+            </div>
+          </div>
+
+          <div class="tech-panel-body">
+            <div class="tech-panel-epma-row">
+              <!-- 01 EPMA 확산 깊이 프로파일 분석 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">01</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">EPMA 확산 깊이 프로파일 및 매핑 분석</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case_epma_diffusion.png" alt="EPMA 확산 깊이 프로파일 및 매핑 분석" loading="lazy">
+                </div>
+              </div>
+
+              <!-- 02 EPMA Data 원소 분포 정량 매핑 분석 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">02</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">EPMA Data 원소 분포 정량 매핑 분석</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case_epma_data_mapping.png" alt="EPMA Data 원소 분포 정량 매핑 분석" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: 손상 원인 분석 -->
+      <section class="cases-category-sec" id="damage">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">손상 원인 분석</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <!-- 기술 자료 패널 (Case 3) -->
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">보일러 튜브 균열 및 파손 원인 분석</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• 파단면 분석,(Fractography), 주사전자 현미경 분석, OM 미세조직 분석을 통한 이종 용착금속 확인, 경도 측정을 통한 종합분석</div>
+              <div class="tech-panel-desc-item">• Fin 용접 결함부 기점 피로 파괴 전파 및 준벽개 파단 메커니즘 분석 및 재발방지 대책 수립</div>
+            </div>
+          </div>
+
+          <!-- 기술 분석 자료 그리드 (2x2 나란히 2줄) -->
+          <div class="tech-panel-body">
+            <!-- 1행 (2열 나란히) -->
+            <div class="tech-panel-damage-row1">
+              <!-- 01 파단면에 대한 SEM 분석 결과 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">01</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">파단면에 대한 SEM 분석 결과</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case3_sem_fracture.png" alt="파단면에 대한 SEM 분석 결과" loading="lazy">
+                </div>
+              </div>
+
+              <!-- 02 손상부 단면에 대한 OM 미세조직 사진 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">02</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">손상부 단면에 대한 OM 미세조직 사진</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case3_om_microstructure2.jpg" alt="손상부 단면에 대한 OM 미세조직 사진" loading="lazy">
+                </div>
+              </div>
+            </div>
+
+            <!-- 2행 (2열 나란히) -->
+            <div class="tech-panel-damage-row2">
+              <!-- 03 손상부 단면에 대한 OM 미세조직 사진 (계속) -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">03</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">손상부 단면에 대한 OM 미세조직 사진 (계속)</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case3_om_microstructure1.jpg" alt="손상부 단면에 대한 OM 미세조직 사진 (계속)" loading="lazy">
+                </div>
+              </div>
+
+              <!-- 04 손상부 단면에 대한 경도 측정 결과 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">04</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">손상부 단면에 대한 경도 측정 결과</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case3_hardness_table.jpg" alt="손상부 단면에 대한 경도 측정 결과" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: 용접성 평가 -->
+      <section class="cases-category-sec" id="welding">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">용접성 평가</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <!-- 기술 자료 패널 -->
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">용접성 평가</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• 용접부 단면 검사를 통한 건전성 평가 및 미세조직, 경도 측정 등 수행</div>
+            </div>
+          </div>
+
+          <!-- 기술 분석 자료 그리드 (1줄 2열 나란히) -->
+          <div class="tech-panel-body">
+            <div class="tech-panel-weld-row">
+              <!-- 01 ISO 5817에 따른 용접부 단면 검사 결과 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">01</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">ISO 5817에 따른 용접부 단면 검사 결과</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case5_iso5817_weld.png" alt="ISO 5817에 따른 용접부 단면 검사 결과" loading="lazy">
+                </div>
+              </div>
+
+              <!-- 02 AMS 4956 재질 용접 시험편 Macrostructure 분석 결과 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">02</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">AMS 4956 재질 용접 시험편 Macrostructure 분석 결과</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case5_ams4956_ti_weld.png" alt="AMS 4956 재질 용접 시험편 Macrostructure 분석 결과" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: 현장 비파괴 -->
+      <section class="cases-category-sec" id="replica">
+        <div class="cases-category-header">
+          <h2 class="cases-category-title">현장 비파괴</h2>
+          <p class="cases-category-desc"></p>
+        </div>
+        <!-- 기술 자료 패널 (Replica) -->
+        <div class="tech-case-panel">
+          <div class="tech-panel-header-main">
+            <h3 class="tech-panel-main-title">현장 Replica 조직 검사</h3>
+            <div class="tech-panel-desc-list">
+              <div class="tech-panel-desc-item">• 가동 중인 고온 설비 부품 표면의 현장 Replica Film 복제를 통한 미세조직 분석 및 열화 상태 비파괴 진단</div>
+            </div>
+          </div>
+
+          <!-- 기술 분석 자료 그리드 (1줄 2열 나란히) -->
+          <div class="tech-panel-body">
+            <div class="tech-panel-replica-row">
+              <!-- 01 Replication Method 모식도 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">01</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">Replication Method 모식도</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case7_replica_method.jpg" alt="Replication Method 모식도" loading="lazy">
+                </div>
+              </div>
+
+              <!-- 02 실제 현장 분석 및 미세조직 복제 결과 -->
+              <div class="tech-panel-item">
+                <div class="tech-panel-item-header">
+                  <span class="tech-panel-tag">02</span>
+                  <div class="tech-panel-title-group">
+                    <h4 class="tech-panel-title">실제 현장 분석 및 미세조직 복제 결과</h4>
+                  </div>
+                </div>
+                <div class="tech-panel-img-box">
+                  <img src="images/case7_replica_analysis.png" alt="실제 현장 분석 및 미세조직 복제 결과" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <div class="text-center" style="margin-top:48px;">
+          <a href="estimate.html" class="btn btn-primary" style="font-size: 1rem; padding: 14px 32px;">
+            관련 분석 견적 문의하기 →
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Quick Quote Inquiry Card (Fixed Position Outside Main Container) -->
+  <aside class="cases-floating-quote" id="stickyQuoteCard">
+    <div class="sticky-quote-card">
+      <div class="sticky-card-header">
+        <h3 class="sticky-card-title">견적 문의</h3>
+        <p class="sticky-card-sub">필요한 분석 항목을 선택하고 기본 정보를 입력해주세요.</p>
+      </div>
+
+      <form id="stickyQuoteForm" novalidate onsubmit="return false;">
+        <!-- 이름 -->
+        <div class="sticky-form-group">
+          <label class="sticky-form-label" for="stickyName">이름 <span>*</span></label>
+          <input type="text" id="stickyName" class="sticky-form-control" placeholder="이름" required>
+          <div class="sticky-error-msg" id="stickyNameError"></div>
+        </div>
+
+        <!-- 연락처 -->
+        <div class="sticky-form-group">
+          <label class="sticky-form-label" for="stickyPhone">연락처 <span>*</span></label>
+          <input type="tel" id="stickyPhone" class="sticky-form-control" placeholder="010-0000-0000" required>
+          <div class="sticky-error-msg" id="stickyPhoneError"></div>
+        </div>
+
+        <!-- 요청 분석 항목 -->
+        <div class="sticky-form-group">
+          <label class="sticky-form-label">요청 분석 항목 <span>*</span></label>
+          <div class="sticky-checkbox-list">
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="시험편 전처리">
+              <span>시험편 전처리</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="미세조직 분석">
+              <span>미세조직 분석</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="SEM / EDS 분석">
+              <span>SEM / EDS 분석</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="EPMA 분석">
+              <span>EPMA 분석</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="용접부 건전성 평가">
+              <span>용접부 건전성 평가</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="제품 특성평가">
+              <span>제품 특성평가</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="손상 원인 분석">
+              <span>손상 원인 분석</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="현장 Replica 검사">
+              <span>현장 Replica 검사</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="기계적 특성평가 (인장, 충격 등)">
+              <span>기계적 특성평가 (인장, 충격 등)</span>
+            </label>
+            <label class="sticky-checkbox-item">
+              <input type="checkbox" name="stickyServices" value="기타 (상세 요청사항 참조)">
+              <span>기타</span>
+            </label>
+          </div>
+          <div class="sticky-error-msg" id="stickyServiceError"></div>
+        </div>
+
+        <!-- 요청사항 -->
+        <div class="sticky-form-group">
+          <label class="sticky-form-label" for="stickyRequest">요청사항</label>
+          <textarea id="stickyRequest" class="sticky-form-control sticky-textarea" rows="2" placeholder="확인하고 싶은 내용이나 요청사항을 작성해주세요."></textarea>
+        </div>
+
+        <!-- 견적 문의하기 버튼 -->
+        <button type="button" class="btn-sticky-quote" id="stickyQuoteSubmitBtn">
+          견적 문의하기 →
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <a href="index.html" class="logo" style="margin-bottom:12px;">
+            <img src="images/elab-logo-header.png" alt="ELAB" class="logo-img-footer" onerror="this.style.display='none';">
+            <span class="footer-logo-text">이랩 (ELAB)</span>
+          </a>
+          <div class="footer-company-info">
+            <div class="footer-info-line">대표 김도훈 | 사업자등록번호 757-26-01653</div>
+            <div class="footer-info-line">금속 시험편 전처리 및 재료 분석 서비스</div>
+            <div class="footer-info-line">E-Mail elabkdh@naver.com | Tel. 010-7517-3842</div>
+            <div class="footer-info-line">대구광역시 북구 연경지묘로 2, 1동 4층 405-72</div>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">주요 서비스</h4>
+          <div class="footer-links">
+            <a href="index.html#services">금속 시험편 전처리</a>
+            <a href="index.html#services">미세조직 분석</a>
+            <a href="index.html#services">SEM / EDS 분석</a>
+            <a href="index.html#services">EPMA 분석</a>
+            <a href="index.html#services">경도 측정 / 용접부 평가</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">빠른 이동</h4>
+          <div class="footer-links">
+            <a href="index.html#about">ELAB 소개</a>
+            <a href="index.html#infrastructure">분석 인프라</a>
+            <a href="cases.html">분석 사례</a>
+            <a href="estimate.html">견적 문의</a>
+            <a href="contact.html">연락처</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 ELAB. All rights reserved.</div>
+        <div>FAST &amp; ACCURATE</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Case Modal Overlay -->
+  <div class="modal-overlay" id="caseModalOverlay">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="닫기">✕</button>
+      <div id="modalContentBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

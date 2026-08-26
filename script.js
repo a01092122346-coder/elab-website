@@ -716,8 +716,15 @@ function initCasesCategoryNav() {
                       document.querySelector(`.cases-tab-btn[href="#${secId}"]`);
     if (activeTab) {
       activeTab.classList.add('active');
-      // Scroll active tab into view for mobile horizontal scrolling
-      activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      // Scroll active tab horizontally inside category container (never scroll window)
+      const container = activeTab.parentElement || document.getElementById('casesCategoryContainer');
+      if (container) {
+        const targetLeft = activeTab.offsetLeft - container.clientWidth / 2 + activeTab.clientWidth / 2;
+        container.scrollTo({
+          left: targetLeft,
+          behavior: 'smooth'
+        });
+      }
     }
   }
 
@@ -807,12 +814,14 @@ function initCasesCategoryNav() {
       userHasScrolled = true;
       window.removeEventListener('wheel', markUserScrolled);
       window.removeEventListener('touchmove', markUserScrolled);
+      window.removeEventListener('scroll', markUserScrolled);
       window.removeEventListener('keydown', markUserScrolled);
       window.removeEventListener('mousedown', markUserScrolled);
     };
 
     window.addEventListener('wheel', markUserScrolled, { passive: true });
     window.addEventListener('touchmove', markUserScrolled, { passive: true });
+    window.addEventListener('scroll', markUserScrolled, { passive: true });
     window.addEventListener('keydown', markUserScrolled, { passive: true });
     window.addEventListener('mousedown', markUserScrolled, { passive: true });
 

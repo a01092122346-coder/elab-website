@@ -805,8 +805,9 @@ function initCasesCategoryNav() {
     });
   });
 
-  // Handle initial page load hash scroll offset (e.g. cases.html#damage or #welding from main page)
-  if (window.location.hash) {
+  // Handle initial page load hash scroll offset (Desktop only; disabled on mobile/tablet <=1024px to prevent vertical scroll jumping)
+  const isMobileOrTablet = window.matchMedia('(max-width: 1024px)').matches;
+  if (window.location.hash && !isMobileOrTablet) {
     let userHasScrolled = false;
 
     // Detect manual user scroll/touch/key input to prevent overriding user scroll intent

@@ -3329,20 +3329,242 @@ select:focus-visible {
 }
 
 /* ==========================================================================
-   HEADER SUBTITLE RESPONSIVE VISIBILITY (Desktop Only: > 1200px)
-   Hide .logo-sub on Tablet and Mobile
+   MOBILE & TABLET HEADER LOGO SYSTEM (Left-aligned Logo + Subtitle)
    ========================================================================== */
 @media (max-width: 1200px) {
   .logo-sub {
-    display: none !important;
+    display: block !important;
   }
 }
 
 /* ==========================================================================
-   TABLET RESPONSIVE SYSTEM (769px ~ 1024px)
-   About ELAB Image Natural Aspect Ratio Correction
+   TABLET RESPONSIVE SYSTEM (769px ~ 1200px)
+   Hero Section Rebalanced Proportions, Phrase Wrapping & Card Alignment
    ========================================================================== */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1200px) {
+  .hero {
+    min-height: auto !important;
+    padding: 105px 0 32px !important;
+  }
+
+  .hero > .container {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+    max-width: 100% !important;
+  }
+
+  .hero-visual-container {
+    opacity: 1 !important;
+  }
+
+  .hero-visual-img {
+    object-position: 70% center !important;
+  }
+
+  .hero-visual-shading {
+    background: linear-gradient(90deg, 
+      #031421 0%, 
+      rgba(3, 20, 33, 0.92) 25%, 
+      rgba(3, 20, 33, 0.65) 55%, 
+      rgba(3, 20, 33, 0.3) 80%, 
+      transparent 95%),
+    linear-gradient(180deg, 
+      rgba(3, 20, 33, 0.6) 0%, 
+      transparent 15%, 
+      transparent 85%, 
+      #031421 100%) !important;
+  }
+
+  /* 1 & 2. Rebalance Grid Proportions (Left 58% ~ 60%, Right 42% ~ 40%) */
+  .hero-container-grid {
+    grid-template-columns: 58% 42% !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    align-items: flex-end !important;
+  }
+
+  .hero-content {
+    max-width: 100% !important;
+    padding-right: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* 1. Headline Korean Phrase Wrapping & Typography */
+  .hero-title {
+    font-size: clamp(2.2rem, 3.8vw, 3rem) !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.8px !important;
+    margin-bottom: 24px !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+
+  .hero-title span {
+    color: #FFFFFF !important;
+    display: inline !important;
+  }
+
+  .hero-highlight {
+    font-size: clamp(0.9rem, 1.4vw, 1rem) !important;
+    line-height: 1.6 !important;
+    margin-bottom: 20px !important;
+    border-left: 2px solid #94A3B8 !important;
+    padding-left: 12px !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .hero-description {
+    font-size: clamp(0.875rem, 1.3vw, 0.975rem) !important;
+    line-height: 1.8 !important;
+    color: #CBD5E1 !important;
+    margin-bottom: 16px !important;
+    max-width: 100% !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* 3. CTA Buttons Alignment */
+  .hero-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    flex-wrap: wrap !important;
+    margin-top: 28px !important;
+  }
+
+  .hero-btn {
+    min-width: 160px !important;
+    height: 48px !important;
+    padding: 0 20px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* 4. Tablet Feature Items Row (Single Horizontal Row, 3 Equal Columns) */
+  .hero-features-row {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    margin-top: 36px !important;
+    margin-bottom: 8px !important;
+    width: 100% !important;
+    align-items: stretch !important;
+  }
+
+  .hero-feature-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-right: none !important;
+    padding: 0 !important;
+  }
+
+  .hero-feature-icon-badge {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero-feature-icon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .hero-feature-text-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    text-align: left !important;
+    min-width: 0 !important;
+    flex: 1 1 0 !important;
+  }
+
+  .hero-feature-title {
+    font-size: clamp(0.75rem, 1.1vw, 0.825rem) !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .hero-feature-desc {
+    font-size: clamp(0.68rem, 0.95vw, 0.725rem) !important;
+    font-weight: 400 !important;
+    color: #94A3B8 !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* 3. Right Column: 3 Equipment Cards Uniform Heights & Alignment */
+  .hero-cards-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    margin-top: auto !important;
+    align-self: flex-end !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-card-item {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    background: rgba(4, 22, 37, 0.85) !important;
+  }
+
+  .hero-card-img-box {
+    width: 100% !important;
+    height: 130px !important;
+    aspect-ratio: auto !important;
+    max-height: none !important;
+  }
+
+  .hero-card-label {
+    padding: 10px 8px 12px !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: 76px !important;
+  }
+
+  .hero-card-title {
+    font-size: clamp(0.785rem, 1.1vw, 0.85rem) !important;
+    margin-bottom: 4px !important;
+    line-height: 1.3 !important;
+  }
+
+  .hero-card-sub {
+    font-size: clamp(0.68rem, 0.95vw, 0.725rem) !important;
+    line-height: 1.35 !important;
+    word-break: keep-all !important;
+  }
+
+  .hero-ticker-container {
+    margin-top: 32px !important;
+    padding-top: 16px !important;
+  }
+
+  .hero-ticker-text {
+    gap: 20px !important;
+    font-size: 0.785rem !important;
+    letter-spacing: 2px !important;
+  }
+
   .about-grid {
     grid-template-columns: 1fr !important;
     gap: 36px !important;
@@ -3366,6 +3588,10 @@ select:focus-visible {
     object-fit: contain !important;
     object-position: center !important;
     display: block !important;
+  }
+
+  .mobile-nav-drawer {
+    padding: 36px 40px 48px !important;
   }
 }
 
@@ -3484,234 +3710,410 @@ select:focus-visible {
   }
 
   /* --------------------------------------------------------------------------
-     2. Header & Navigation Drawer
+     2. Header & Navigation Drawer System
      -------------------------------------------------------------------------- */
-  .header {
-    height: 64px;
+  .header,
+  body:not(:has(.hero)) .header,
+  .header.scrolled,
+  body.mobile-menu-open .header {
+    height: 68px !important;
+    background-color: #031421 !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
   }
 
   .header-container {
-    height: 64px !important;
+    height: 68px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     gap: 8px !important;
     padding-left: 16px !important;
     padding-right: 16px !important;
+    width: 100% !important;
   }
 
+  /* Left-Side Logo Block: Centered Visual Axis for Logo Image + Tagline */
   .logo {
     display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
-    gap: 8px !important;
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-  }
-
-  .logo-img {
-    width: clamp(120px, 34vw, 138px) !important;
-    height: auto !important;
-    max-height: 36px !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    text-decoration: none !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
     flex-shrink: 0 !important;
   }
 
+  .logo-img {
+    height: 24px !important;
+    width: auto !important;
+    max-height: 24px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
   .logo-sub {
-    font-size: clamp(0.7rem, 2.3vw, 0.825rem) !important;
+    display: block !important;
+    font-size: 0.675rem !important;
     font-weight: 600 !important;
-    color: var(--primary-navy) !important;
-    border-left: 1px solid var(--border-gray) !important;
-    padding-left: 8px !important;
+    color: #CBD5E1 !important;
+    letter-spacing: 0.4px !important;
+    line-height: 1 !important;
+    border-left: none !important;
+    padding-left: 0 !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    flex-shrink: 1 !important;
-    min-width: 0 !important;
+    text-align: center !important;
   }
 
   .nav-menu,
+  .header-contact,
   .header-cta {
     display: none !important;
   }
 
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Crisp White Hamburger & Close Toggle Button */
   .mobile-nav-toggle {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     background: none !important;
     border: none !important;
-    color: var(--primary-navy) !important;
+    color: #FFFFFF !important;
     cursor: pointer !important;
     padding: 6px !important;
+    opacity: 1 !important;
     flex-shrink: 0 !important;
     margin-left: auto !important;
+    transition: transform 0.2s ease !important;
+  }
+
+  .mobile-nav-toggle svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+    stroke-width: 2.2px !important;
+    opacity: 1 !important;
+    display: block !important;
+  }
+
+  .mobile-nav-toggle .icon-close {
+    display: none !important;
+  }
+
+  .mobile-nav-toggle .icon-hamburger {
+    display: block !important;
+  }
+
+  .mobile-nav-toggle.active .icon-hamburger {
+    display: none !important;
+  }
+
+  .mobile-nav-toggle.active .icon-close {
+    display: block !important;
+  }
+
+  /* Full-Width Mobile Navigation Layer Positioned Below Header (top: 68px) */
+  body.mobile-menu-open {
+    overflow: hidden !important;
+    height: 100vh !important;
+    touch-action: none !important;
+  }
+
+  .mobile-nav-overlay {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   .mobile-nav-drawer {
-    width: min(86vw, 340px) !important;
-    right: -360px !important;
-    padding: 22px 24px !important;
+    position: fixed !important;
+    top: 68px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100dvh - 68px) !important;
+    background-color: #FFFFFF !important;
+    z-index: 1050 !important;
+    padding: 28px 24px 36px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-8px) !important;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
     box-sizing: border-box !important;
   }
 
   .mobile-nav-drawer.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
     right: 0 !important;
   }
 
   .mobile-drawer-header {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding-bottom: 16px !important;
-    border-bottom: 1px solid var(--border-gray) !important;
-    margin-bottom: 24px !important;
-  }
-
-  .mobile-drawer-header .logo-sub {
     display: none !important;
   }
 
-  .mobile-drawer-header .logo-img {
-    width: 125px !important;
-    height: auto !important;
-  }
-
-  .close-drawer-btn {
-    font-size: 1.4rem !important;
-    color: var(--text-black) !important;
-    padding: 6px !important;
-    background: none !important;
-    border: none !important;
-    cursor: pointer !important;
-  }
-
   .mobile-nav-links {
-    gap: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 720px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   .mobile-nav-link {
-    font-size: 1rem !important;
+    font-size: 1.05rem !important;
     font-weight: 700 !important;
-    padding: 8px 0 !important;
+    color: #071B2B !important;
+    padding: 16px 0 !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .mobile-nav-link:last-child {
+    border-bottom: 1px solid #E2E8F0 !important;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: #2563EB !important;
+    font-weight: 800 !important;
+  }
+
+  .mobile-nav-drawer > div:last-child {
+    margin-top: auto !important;
+    padding-top: 28px !important;
+    width: 100% !important;
+    max-width: 720px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-nav-drawer .btn-primary {
+    width: 100% !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    border-radius: 6px !important;
+    background-color: #102A43 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(16, 42, 67, 0.15) !important;
   }
 
   /* --------------------------------------------------------------------------
-     3. Hero Section (28px Title, 15px Highlight, 14px Body, 12px Features)
+     3. Hero Section (Mobile Optimized: Visible Spark Background & Compact Cards)
      -------------------------------------------------------------------------- */
   .hero {
-    padding: 80px 0 28px !important;
+    padding: 96px 0 28px !important;
+    min-height: auto !important;
   }
 
+  /* 6 & 7. Visible Mobile Background Image & Responsive Gradient Overlay */
   .hero-visual-container {
     position: absolute !important;
     top: 0 !important;
-    right: 0 !important;
+    left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    opacity: 0.18 !important;
+    opacity: 1 !important;
     pointer-events: none !important;
+  }
+
+  .hero-visual-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 75% center !important;
+    display: block !important;
+    filter: brightness(1) contrast(1.15) saturate(1.1) !important;
+  }
+
+  .hero-visual-shading {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(180deg, 
+      rgba(3, 20, 33, 0.82) 0%, 
+      rgba(3, 20, 33, 0.58) 40%, 
+      rgba(3, 20, 33, 0.88) 100%) !important;
   }
 
   .hero-container-grid {
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    gap: 24px !important;
+    min-height: 0 !important;
   }
 
+  .hero-content {
+    max-width: 100% !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* 1 & 3. Headline & Typography Alignment */
   .hero-title {
-    font-size: clamp(28px, 6.8vw, 30px) !important;
-    line-height: 1.28 !important;
-    margin-bottom: 14px !important;
+    font-size: clamp(1.65rem, 6.2vw, 2.1rem) !important;
+    line-height: 1.35 !important;
+    margin-bottom: 16px !important;
     letter-spacing: -0.5px !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    color: #FFFFFF !important;
   }
 
   .hero-title span {
-    display: block !important;
-    margin-top: 4px !important;
-    color: #79A7D9 !important;
+    display: inline !important;
+    margin-top: 0 !important;
+    color: #FFFFFF !important;
   }
 
   .hero-highlight {
-    font-size: 15px !important;
-    line-height: 1.6 !important;
-    margin-bottom: 16px !important;
-    border-left: 2px solid #5A82B8 !important;
-    padding-left: 12px !important;
+    font-size: 0.875rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 14px !important;
+    border-left: 2px solid #69A1DA !important;
+    padding-left: 10px !important;
+    color: #69A1DA !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
   }
 
   .hero-description {
-    font-size: 14px !important;
+    font-size: 0.875rem !important;
     line-height: 1.7 !important;
-    color: #94A3B8 !important;
+    color: #CBD5E1 !important;
     margin-bottom: 12px !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
   }
 
-  /* Hero 3 Feature Items Row (12px text, 24px icon) */
+  /* 3. Hero CTA Buttons (Stacked Full Width) */
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-top: 22px !important;
+  }
+
+  .hero-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    font-size: 0.9rem !important;
+    justify-content: center !important;
+    border-radius: 4px !important;
+  }
+
+  /* 4 & 5. Smartphone 3-Column Feature Badges Row */
   .hero-features-row {
     display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 0 !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
     width: 100% !important;
-    margin-top: 20px !important;
-    margin-bottom: 18px !important;
-    align-items: center !important;
-  }
-
-  .hero-feature-divider {
-    display: none !important;
+    margin-top: 24px !important;
+    margin-bottom: 8px !important;
+    align-items: stretch !important;
   }
 
   .hero-feature-item {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     text-align: center !important;
-    padding: 0 4px !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    padding: 10px 4px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.09) !important;
+    border-radius: 6px !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.09) !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  .hero-feature-item:last-child {
-    border-right: none !important;
+  .hero-feature-icon-badge {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    border-radius: 50% !important;
+    margin-bottom: 6px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    flex-shrink: 0 !important;
   }
 
   .hero-feature-icon {
-    width: 24px !important;
-    height: 24px !important;
-    margin-bottom: 5px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
-  .hero-feature-text {
-    font-size: 12px !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
+  .hero-feature-text-block {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 2px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .hero-feature-title {
+    font-size: 0.725rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    line-height: 1.25 !important;
     text-align: center !important;
     white-space: normal !important;
     word-break: keep-all !important;
+    overflow-wrap: break-word !important;
   }
 
-  .hero-feature-text br {
+  .hero-feature-desc {
+    font-size: 0.65rem !important;
+    font-weight: 400 !important;
+    color: #94A3B8 !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
     display: block !important;
   }
 
-  /* Hero CTA Buttons */
-  .hero-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 10px !important;
-    margin-top: 20px !important;
-  }
-
-  .hero-btn {
-    width: 100% !important;
-    min-height: 48px !important;
-    font-size: 14px !important;
-    justify-content: center !important;
-    border-radius: 5px !important;
-  }
-
-  /* Hero Image Cards */
+  /* 3 & 5. Mobile Equipment Cards (Stacked Compact Cards) */
   .hero-cards-wrapper {
     display: flex !important;
     flex-direction: column !important;
@@ -3723,18 +4125,52 @@ select:focus-visible {
 
   .hero-card-item {
     width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    background: rgba(4, 22, 37, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
   }
 
   .hero-card-img-box {
+    width: 105px !important;
+    min-width: 105px !important;
+    height: 80px !important;
+    aspect-ratio: auto !important;
+    max-height: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero-card-img-box img {
     width: 100% !important;
-    aspect-ratio: 16 / 9 !important;
-    height: auto !important;
-    max-height: 165px !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
 
   .hero-card-label {
-    padding: 7px 8px !important;
+    padding: 10px 12px !important;
     font-size: 13px !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  .hero-card-title {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 3px !important;
+    line-height: 1.3 !important;
+  }
+
+  .hero-card-sub {
+    font-size: 0.725rem !important;
+    line-height: 1.35 !important;
+    word-break: keep-all !important;
+    color: #94A3B8 !important;
   }
 
   /* Hero Ticker Strip (Compact 2-Line Layout: 10px, letter-spacing: 0.10em) */

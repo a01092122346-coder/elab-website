@@ -57,20 +57,34 @@ function initNavigation() {
     initScrollSpy(setActiveTarget, clearAllActive);
   }
 
-  // Mobile Drawer
+  // Mobile Drawer & Header Navigation Toggle
   function openDrawer() {
     mobileNavOverlay?.classList.add('active');
     mobileNavDrawer?.classList.add('active');
+    mobileNavToggle?.classList.add('active');
+    document.body.classList.add('mobile-menu-open');
     document.body.style.overflow = 'hidden';
+    mobileNavToggle?.setAttribute('aria-label', '메뉴 닫기');
   }
 
   function closeDrawer() {
     mobileNavOverlay?.classList.remove('active');
     mobileNavDrawer?.classList.remove('active');
+    mobileNavToggle?.classList.remove('active');
+    document.body.classList.remove('mobile-menu-open');
     document.body.style.overflow = '';
+    mobileNavToggle?.setAttribute('aria-label', '메뉴 열기');
   }
 
-  mobileNavToggle?.addEventListener('click', openDrawer);
+  function toggleDrawer() {
+    if (mobileNavDrawer?.classList.contains('active')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  }
+
+  mobileNavToggle?.addEventListener('click', toggleDrawer);
   closeDrawerBtn?.addEventListener('click', closeDrawer);
   mobileNavOverlay?.addEventListener('click', closeDrawer);
 

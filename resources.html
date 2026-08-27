@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기술 자료실 | ELAB 이랩</title>
+  <meta name="description" content="ELAB 금속 재료 분석, 전처리 및 미세조직 평가 기술 자료실입니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="ELAB 이랩">
+  <meta property="og:title" content="기술 자료실 | ELAB 이랩">
+  <meta property="og:description" content="금속 시험편 전처리, 미세조직 분석 및 기술 지침 관련 자료실">
+  <meta property="og:image" content="images/hero_main_microstructure.jpg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       Header / Navigation
+       ============================================================ -->
+  <header class="header" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="images/elab-logo-white.png" alt="ELAB" class="logo-img" onerror="this.src='images/elab-logo-header.png';">
+        <span class="logo-sub">Metal Prep. &amp; Analysis</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html#about"          class="nav-link">ELAB 소개</a>
+        <a href="index.html#services"       class="nav-link">분석 서비스</a>
+        <a href="index.html#infrastructure" class="nav-link">분석 인프라</a>
+        <a href="cases.html"                class="nav-link">분석 사례</a>
+        <a href="resources.html"            class="nav-link active">기술 자료실</a>
+        <a href="contact.html"              class="nav-link">연락처</a>
+      </nav>
+
+      <div class="header-contact">
+        <a href="tel:010-7517-3842" class="header-contact-item">
+          <svg class="header-contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>010-7517-3842</span>
+        </a>
+        <span class="header-contact-sep">|</span>
+        <a href="estimate.html" class="header-contact-item header-contact-link">
+          <svg class="header-contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>문의하기</span>
+        </a>
+      </div>
+
+      <div class="header-actions">
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="메뉴 열기">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-header">
+      <div class="logo">
+        <img src="images/elab-logo-white.png" alt="ELAB" class="logo-img" onerror="this.src='images/elab-logo-header.png';">
+        <span class="logo-sub">Metal Prep. &amp; Analysis</span>
+      </div>
+      <button class="close-drawer-btn" id="closeDrawerBtn" aria-label="메뉴 닫기">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html#about"          class="mobile-nav-link">ELAB 소개</a>
+      <a href="index.html#services"       class="mobile-nav-link">분석 서비스</a>
+      <a href="index.html#infrastructure" class="mobile-nav-link">분석 인프라</a>
+      <a href="cases.html"                class="mobile-nav-link">분석 사례</a>
+      <a href="resources.html"            class="mobile-nav-link active">기술 자료실</a>
+      <a href="contact.html"              class="mobile-nav-link">연락처</a>
+    </div>
+    <div style="margin-top:auto;padding-top:20px;">
+      <a href="estimate.html" class="btn btn-primary" style="width:100%;">이메일 견적 문의</a>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="page-banner-bg"></div>
+    <div class="container page-banner-content">
+      <div class="breadcrumb">
+        <a href="index.html">홈</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>기술 자료실</span>
+      </div>
+      <div class="page-banner-tag">Technical Resources</div>
+      <h1 class="page-banner-title">기술 자료실</h1>
+      <p class="page-banner-desc">금속 시험편 전처리 조건 설계, 미세조직 평가 가이드라인 및 재료 분석 기술 자료를 제공합니다.</p>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <main style="background-color: var(--light-bg); padding: 80px 0;">
+    <div class="container">
+      <div style="background: #ffffff; border: 1px solid var(--border-gray); border-radius: 12px; padding: 56px 40px; text-align: center; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+        <div style="width: 64px; height: 64px; background: rgba(30, 58, 138, 0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; color: var(--primary-navy);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-black); margin-bottom: 14px;">기술 자료실 업데이트 준비 중</h2>
+        <p style="font-size: 0.975rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px;">
+          시편 전처리와 금속 미세조직 분석에 관한 전문 기술 지침 및 기술 자료가 차례대로 업로드될 예정입니다.<br>
+          급한 분석 관련 기술 문의는 고객지원 채널을 통해 친절히 안내해 드립니다.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="estimate.html" class="btn btn-primary">견적 및 기술 문의</a>
+          <a href="cases.html" class="btn btn-secondary">분석 사례 둘러보기</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-brand">
+          <div class="logo footer-logo">
+            <img src="images/elab-logo-white.png" alt="ELAB" class="logo-img-footer" onerror="this.src='images/elab-logo-header.png';">
+            <span class="logo-sub" style="color:#94A3B8;">Metal Prep. &amp; Analysis</span>
+          </div>
+          <p class="footer-desc">
+            ELAB은 금속 시험편 전처리 및 조직 평가 전문 기술 서비스를 제공합니다.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">주요 서비스</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#services">미세조직 관찰 (OM)</a></li>
+            <li><a href="index.html#services">SEM / EDS 미세조직 및 성분분석</a></li>
+            <li><a href="index.html#services">EPMA 정밀 성분분석</a></li>
+            <li><a href="index.html#services">용접부 평가 및 HAZ 분석</a></li>
+            <li><a href="index.html#services">손상 원인 분석</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">바로가기</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#about">ELAB 소개</a></li>
+            <li><a href="index.html#infrastructure">분석 인프라</a></li>
+            <li><a href="cases.html">분석 사례</a></li>
+            <li><a href="resources.html">기술 자료실</a></li>
+            <li><a href="contact.html">연락처</a></li>
+            <li><a href="estimate.html">견적 문의</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">고객지원</h4>
+          <div class="footer-contact-info">
+            <p><strong>전화:</strong> 010-7517-3842</p>
+            <p><strong>이메일:</strong> elabkdh@gmail.com</p>
+            <p><strong>운영시간:</strong> 평일 09:00 - 18:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; ELAB. All rights reserved.
+        </div>
+        <div class="hero-ticker-text" style="font-size:0.75rem;">
+          <span class="ticker-tech">METALLOGRAPHY &nbsp;·&nbsp; MICROSTRUCTURE &nbsp;·&nbsp; FAILURE ANALYSIS</span>
+          <div class="ticker-brand-group">
+            <span class="ticker-slogan">FAST &amp; ACCURATE</span>
+            <span class="ticker-brand">ELAB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

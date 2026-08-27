@@ -46,6 +46,8 @@ function initNavigation() {
   // Page-specific link activation logic
   if (currentFile === 'cases.html') {
     setActiveTarget('cases.html');
+  } else if (currentFile === 'resources.html') {
+    setActiveTarget('resources.html');
   } else if (currentFile === 'contact.html') {
     setActiveTarget('contact.html');
   } else if (currentFile === 'estimate.html') {
@@ -902,8 +904,8 @@ function initHeroCardLightbox() {
     '광학현미경 (OM)': {
       title: '광학현미경 (OM, Optical Microscopy)',
     },
-    '주사전자현미경 (SEM)': {
-      title: '주사전자현미경 (SEM, Scanning Electron Microscopy)',
+    '전자현미경': {
+      title: '전자현미경 (SEM, Electron Microscopy)',
     }
   };
 
@@ -931,11 +933,11 @@ function initHeroCardLightbox() {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
       const imgEl = card.querySelector('.hero-card-img-box img');
-      const labelEl = card.querySelector('.hero-card-label');
+      const titleEl = card.querySelector('.hero-card-title') || card.querySelector('.hero-card-label');
       if (!imgEl) return;
 
       const imgSrc = imgEl.getAttribute('src');
-      const labelText = labelEl ? labelEl.textContent.trim() : '';
+      const labelText = titleEl ? titleEl.textContent.trim() : '';
       const info = cardData[labelText] || { title: labelText };
       openLightboxWithData(imgSrc, info.title);
     });

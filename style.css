@@ -447,22 +447,193 @@ img {
 }
 
 /* ==========================================================================
-   Hero Section (Main Page)
+   Header & Navigation (MTA-Inspired Left-Biased Header & White Logo)
+   ========================================================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(3, 20, 33, 0.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+body:not(:has(.hero)) .header,
+.header.scrolled {
+  background-color: rgba(3, 20, 33, 0.96);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 88px;
+  max-width: 1520px;
+  padding-left: 48px;
+  padding-right: 48px;
+  width: 100%;
+}
+
+/* Vertical Brand Block: White Logo + English Subtitle "Metal Prep. & Analysis" */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  margin-right: 44px;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-img-footer {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-brand {
+  display: none;
+}
+
+.logo-sub {
+  font-size: 0.725rem;
+  font-weight: 600;
+  color: #CBD5E1;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  border-left: none;
+  padding-left: 0;
+  line-height: 1;
+}
+
+/* Left-Biased Navigation Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.nav-link {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3B82F6;
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Right-Side Contact Area (Desktop Only) */
+.header-contact {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.header-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.header-contact-item:hover {
+  color: #FFFFFF;
+  opacity: 0.85;
+}
+
+.header-contact-icon {
+  color: currentColor;
+  opacity: 0.9;
+}
+
+.header-contact-sep {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   Hero Section (MTA-Inspired Premium Key Visual Layout)
    ========================================================================== */
 .hero {
   position: relative;
-  padding: 155px 0 36px;
-  background-color: #070E1B;
+  min-height: calc(100vh - 88px);
+  padding: 120px 0 36px;
+  background-color: #031421;
   color: var(--bg-white);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Right side large main visual container (1번 사진) */
+.hero > .container {
+  max-width: 1520px;
+  padding-left: 48px;
+  padding-right: 48px;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Full-width main visual backdrop matching MTA reference image */
 .hero-visual-container {
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
-  width: 58%;
+  width: 100%;
   height: 100%;
   z-index: 1;
   overflow: hidden;
@@ -475,9 +646,11 @@ img {
   object-fit: cover;
   object-position: center right;
   display: block;
+  filter: brightness(0.96) contrast(1.12) saturate(1.05);
+  opacity: 1;
 }
 
-/* Wide Shading Overlay to seamlessly fade image edges into dark navy background */
+/* High Transparency Cinematic Shading Overlay matching reference image exactly */
 .hero-visual-shading {
   position: absolute;
   top: 0;
@@ -485,129 +658,93 @@ img {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(to right, #070E1B 0%, rgba(7, 14, 27, 0.92) 20%, rgba(7, 14, 27, 0.55) 45%, rgba(7, 14, 27, 0.15) 75%, transparent 100%),
-    linear-gradient(to bottom, #070E1B 0%, transparent 18%, transparent 82%, #070E1B 100%),
-    linear-gradient(to left, rgba(7, 14, 27, 0.5) 0%, transparent 20%);
+    linear-gradient(90deg, 
+      #031421 0%, 
+      rgba(3, 20, 33, 0.9) 18%, 
+      rgba(3, 20, 33, 0.55) 40%, 
+      rgba(3, 20, 33, 0.15) 65%, 
+      transparent 85%),
+    linear-gradient(180deg, 
+      rgba(3, 20, 33, 0.6) 0%, 
+      transparent 15%, 
+      transparent 85%, 
+      #031421 100%);
 }
 
 .hero-container-grid {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 480px;
-  gap: 40px;
+  grid-template-columns: 50% 50%;
+  gap: 0;
   align-items: flex-end;
+  min-height: 520px;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+  max-width: 720px;
+  padding-right: 20px;
 }
 
-.hero-slogan-badge {
-  display: inline-block;
-  padding: 6px 14px;
-  background: rgba(16, 32, 54, 0.65);
-  border: 1px solid rgba(80, 115, 160, 0.3);
-  color: #CBD5E1; /* Off-white light-slate matching reference Image 2 */
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  border-radius: 4px;
-  margin-bottom: 22px;
+/* Subtitle with Vertical Accent Line matching MTA reference */
+.hero-highlight {
+  font-size: 1.025rem;
+  font-weight: 600;
+  color: #69A1DA; /* Subdued industrial steel blue matching reference image 2 */
+  margin-bottom: 28px;
+  border-left: 2px solid #94A3B8; /* Muted slate gray vertical accent bar */
+  padding-left: 14px;
+  line-height: 1.6;
+  letter-spacing: -0.1px;
 }
 
 .hero-title {
-  font-size: 2.85rem;
+  font-size: 3.5rem;
   font-weight: 900;
-  line-height: 1.25;
-  letter-spacing: -1px;
-  margin-bottom: 18px;
+  line-height: 1.28;
+  letter-spacing: -1.2px;
+  margin-bottom: 32px;
   color: #FFFFFF;
 }
 
 .hero-title span {
-  color: #79A7D9; /* Soft subdued steel blue matching reference Image 2 */
-}
-
-.hero-highlight {
-  font-size: 1.025rem;
-  font-weight: 600;
-  color: #CBD5E1;
-  margin-bottom: 22px;
-  border-left: 2px solid #5A82B8;
-  padding-left: 12px;
-  line-height: 1.6;
+  color: #FFFFFF; /* Entire headline set to solid pure white as requested */
 }
 
 .hero-description {
-  font-size: 0.95rem;
-  color: #94A3B8;
-  line-height: 1.7;
-  margin-bottom: 14px;
+  font-size: 1.025rem;
+  color: #CBD5E1; /* Brighter crisp light-slate text color matching reference image 2 */
+  line-height: 1.95;
+  margin-bottom: 24px;
+  max-width: 660px;
 }
 
 .hero-description:last-of-type {
   margin-bottom: 0;
 }
 
-/* Feature Items Row (Matching Reference Image 2) */
-.hero-features-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-top: 32px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-
-.hero-feature-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  backdrop-filter: none;
-}
-
-.hero-feature-icon {
-  color: #6FA2D9; /* Steel blue icon color matching reference Image 2 */
-  flex-shrink: 0;
-}
-
-.hero-feature-text {
-  font-size: 0.925rem;
-  font-weight: 600;
-  color: #E2E8F0;
-  line-height: 1.35;
-  white-space: nowrap;
-}
-
-.hero-feature-divider {
-  width: 1px;
-  height: 36px;
-  background-color: rgba(255, 255, 255, 0.15);
-  margin: 0 4px;
-}
-
+/* CTA Buttons with Arrow Icons matching MTA Reference */
 .hero-actions {
   display: flex;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin-top: 44px;
 }
 
 .hero-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 170px;
-  padding: 13px 28px;
+  gap: 8px;
+  min-width: 185px;
+  height: 52px;
+  padding: 0 26px;
   font-size: 0.95rem;
   font-weight: 700;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   text-align: center;
   transition: var(--transition-fast);
@@ -616,50 +753,124 @@ img {
   text-decoration: none;
 }
 
-/* 분석 서비스 보기 (Steel Blue Button - Exact match with Reference Image 2) */
+.hero-btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.hero-btn:hover .hero-btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Dark Navy Primary Hero Button */
 .hero-btn-secondary {
-  background-color: #2D5894;
-  border: 1px solid #3F6DAF;
+  background-color: #173256;
+  border: 1px solid rgba(80, 140, 220, 0.4);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(7, 27, 43, 0.2);
+  box-shadow: 0 4px 16px rgba(10, 25, 45, 0.45);
 }
 
 .hero-btn-secondary:hover {
-  background-color: #24497D;
-  border-color: #4C7CC2;
+  background-color: #1E406D;
+  border-color: rgba(120, 175, 240, 0.6);
   color: #FFFFFF;
   transform: translateY(-1px);
 }
 
-/* 견적 문의하기 (Glass Outline Button - Exact match with Reference Image 2) */
 .hero-btn-primary {
-  background-color: rgba(10, 22, 38, 0.6);
-  border: 1px solid rgba(80, 120, 175, 0.4);
+  background-color: rgba(3, 20, 33, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #FFFFFF;
 }
 
 .hero-btn-primary:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(203, 213, 225, 0.7);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.45);
   color: #FFFFFF;
   transform: translateY(-1px);
 }
 
-/* Right Column: 3 Image Overlay Cards */
+/* Feature Capability Indicators (Single Horizontal Row) */
+.hero-features-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 48px;
+  margin-bottom: 8px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.hero-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  flex-shrink: 0;
+}
+
+.hero-feature-icon-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-feature-icon {
+  color: #FFFFFF;
+}
+
+.hero-feature-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.hero-feature-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.hero-feature-desc {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #94A3B8;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* Right Column: Lower-Right 3 Image Cards (Balanced Medium Size) */
 .hero-cards-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin-top: auto;
+  margin-left: auto;
+  align-self: flex-end;
+  width: 100%;
+  max-width: 620px;
 }
 
 .hero-card-item {
-  background: rgba(11, 20, 38, 0.75);
-  border: 1px solid rgba(100, 116, 139, 0.3);
-  border-radius: 8px;
+  background: rgba(4, 22, 37, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
   position: relative;
@@ -668,12 +879,12 @@ img {
 .hero-card-item:hover {
   transform: translateY(-4px);
   border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(37, 99, 235, 0.25);
 }
 
 .hero-card-img-box {
   width: 100%;
-  height: 110px;
+  height: 160px;
   overflow: hidden;
   position: relative;
   background-color: #030712;
@@ -685,10 +896,12 @@ img {
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
+  filter: brightness(0.95);
 }
 
 .hero-card-item:hover .hero-card-img-box img {
-  transform: scale(1.06);
+  transform: none;
+  filter: brightness(1.02);
 }
 
 /* Hover overlay badge (Disabled - No '클릭하여 확대' overlay text) */
@@ -697,19 +910,41 @@ img {
 }
 
 .hero-card-label {
-  padding: 10px 6px;
-  text-align: center;
-  font-size: 0.8rem;
+  padding: 12px 12px 14px;
+  text-align: left;
+  background: rgba(3, 18, 32, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 0.2s ease;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hero-card-title {
+  font-size: 0.875rem;
   font-weight: 700;
-  color: #E2E8F0;
-  background: rgba(7, 14, 27, 0.92);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  white-space: nowrap;
+  color: #F1F5F9;
+  margin-bottom: 5px;
+  line-height: 1.3;
   transition: color 0.2s ease;
 }
 
-.hero-card-item:hover .hero-card-label {
+.hero-card-item:hover .hero-card-title {
   color: #93C5FD;
+}
+
+.hero-card-item.no-lightbox:hover .hero-card-label .hero-card-title {
+  color: #F1F5F9;
+}
+
+.hero-card-sub {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #94A3B8;
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+  word-break: keep-all;
 }
 
 /* Static Hero Card (No Lightbox / No Image Zoom / No Overlay) */
@@ -728,7 +963,7 @@ img {
 }
 
 .hero-card-item.no-lightbox:hover .hero-card-label {
-  color: #E2E8F0;
+  color: inherit;
 }
 
 /* --------------------------------------------------------------------------
@@ -886,18 +1121,56 @@ img {
 
 /* Responsive Media Queries for Hero */
 @media (max-width: 1024px) {
+  .header-container {
+    padding-left: 24px;
+    padding-right: 24px;
+    justify-content: space-between;
+  }
+
+  .nav-menu {
+    display: none !important;
+  }
+
+  .header-contact {
+    display: none !important;
+  }
+
+  .logo {
+    margin-right: 0;
+  }
+
+  .hero > .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 120px 0 40px;
+  }
+
   .hero-container-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
+    min-height: auto;
   }
   
+  .hero-content {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
   .hero-visual-container {
     width: 100%;
-    opacity: 0.35;
+    opacity: 0.3;
   }
 
   .hero-cards-wrapper {
-    max-width: 550px;
+    max-width: 600px;
   }
 }
 
@@ -916,7 +1189,7 @@ img {
   }
 
   .hero-card-img-box {
-    height: 140px;
+    height: 160px;
   }
 }
 

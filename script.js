@@ -634,7 +634,7 @@ ${comments}
 이 메일은 ELAB 공식 홈페이지 견적 문의 양식을 통해 작성되었습니다.`;
 
   window.location.href =
-    `mailto:elabkdh@naver.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+    `mailto:info@metelab.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
 
   showConfirmationModal(company, name, email, phone, selected, bodyText, false);
 }
@@ -657,8 +657,8 @@ function showConfirmationModal(company, name, email, phone, services, fullText, 
 
   const modalTitle = isAutoSent ? '견적 문의 자동 접수 완료' : '이메일 연결 안내';
   const modalDesc = isAutoSent
-    ? '견적 문의가 <strong>elabkdh@naver.com</strong>으로 정상 수신되었습니다.<br>담당자(김도훈 대표)가 확인 후 신속히 답변드리겠습니다.'
-    : '기본 이메일 프로그램이 열립니다.<br>내용 확인 후 <strong>elabkdh@naver.com</strong>으로 전송해주세요.';
+    ? '견적 문의가 <strong>info@metelab.kr</strong>으로 정상 수신되었습니다.<br>담당자(김도훈 대표)가 확인 후 신속히 답변드리겠습니다.'
+    : '기본 이메일 프로그램이 열립니다.<br>내용 확인 후 <strong>info@metelab.kr</strong>으로 전송해주세요.';
 
   body.innerHTML = `
     <div style="text-align:center;padding:10px 0;">
@@ -941,20 +941,10 @@ function initHeroCardLightbox() {
     document.body.style.overflow = '';
   }
 
-  // Hero cards click handler (excluding static no-lightbox cards)
-  const cardItems = document.querySelectorAll('.hero-card-item:not(.no-lightbox)');
+  // Hero cards click handler disabled (static preview cards, no enlargement)
+  const cardItems = document.querySelectorAll('.hero-card-item');
   cardItems.forEach(card => {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', () => {
-      const imgEl = card.querySelector('.hero-card-img-box img');
-      const titleEl = card.querySelector('.hero-card-title') || card.querySelector('.hero-card-label');
-      if (!imgEl) return;
-
-      const imgSrc = imgEl.getAttribute('src');
-      const labelText = titleEl ? titleEl.textContent.trim() : '';
-      const info = cardData[labelText] || { title: labelText };
-      openLightboxWithData(imgSrc, info.title);
-    });
+    card.style.cursor = 'default';
   });
 
   // Global delegation for Technical Panel Images click to enlarge
